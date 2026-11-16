@@ -160,3 +160,18 @@ const router = useRouter()
     <DropdownMenuSeparator />
     <DropdownMenuItem>Profile</DropdownMenuItem>
     <DropdownMenuItem >  <Link href="/myOrders">Orders</Link></DropdownMenuItem>
+
+    
+    <DropdownMenuItem onClick={()=>onSignOut()}>Logout</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+
+  }
+
+     </div>
+
+    </div>
+  )
+}
+
+export default Hedear
