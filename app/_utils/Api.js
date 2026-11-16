@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosGlobal = axios.create({
-    baseURL : "http://localhost:1337/api"
+    baseURL : (process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:1337") + "/api"
 })
 
 const getCategory = () => axiosGlobal.get("/categories?populate=*")
