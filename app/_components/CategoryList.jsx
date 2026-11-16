@@ -8,7 +8,7 @@ function CategoryList({categoryList}) {
    
     <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6  justify-items-center items-center mt-5'>
         {categoryList.map((category,index) => (
-            <Link href="products-category/"  className='  w-30 h-35 mt-3  bg-amber-100  p-3 flex flex-col items-center text-center group' key={index}> 
+            <Link href={"/products-category/"+category.name}  className='  w-30 h-35 mt-3  bg-amber-100  p-3 flex flex-col items-center text-center group' key={index}> 
                 <Image   src={category?.icon?.[0]?.url} 
                 
                 width={80}
