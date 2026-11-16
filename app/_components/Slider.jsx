@@ -20,8 +20,9 @@ function Slider({sliderList}) {
             <Image
             width={1000}
             height={400}
+            alt='slider'
             className='w-full h-[200] md:h-[600px] object-cover rounded-2xl'
-            src={ `http://localhost:1337${slider?.image[0]?.url}` }/>
+            src={slider?.image[0]?.url}/>
 
         </CarouselItem>
     ))} 
