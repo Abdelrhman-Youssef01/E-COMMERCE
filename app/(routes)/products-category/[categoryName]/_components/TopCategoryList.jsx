@@ -10,7 +10,7 @@ function TopCategoryList({categoryList,selectedCategory}) {
                 
                 
                 
-                   <Image   src={`http://localhost:1337${category?.icon?.[0]?.url}`} 
+                   <Image   src={category?.icon?.[0]?.url} 
                    
                    width={80}
                    height={80}
