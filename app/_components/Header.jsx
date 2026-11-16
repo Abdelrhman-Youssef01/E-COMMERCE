@@ -31,9 +31,7 @@ const Hedear = () => {
 const router = useRouter()
   const[category,setCategory] = useState([])
   const[totalCartIItem, setTotalCartItem] = useState(0)
-  const isLogin = sessionStorage.getItem("jwt")?true:false
-  const userId = JSON.parse( sessionStorage.getItem("user"))
-  const jwt = sessionStorage.getItem("jwt")
+  const [isLogin, setIsLogin] = useState(false)
   const {updateCart,setUpdateCart} = useContext(CartContext)
   const [cartItemList, setCartItemList] = useState([])
   
@@ -42,7 +40,9 @@ const router = useRouter()
     sessionStorage.clear()
     router.push("/sign-in")
   }    
+
   useEffect(() =>{
+    setIsLogin(sessionStorage.getItem("jwt") ? true : false)
     getCategoryList()
   },[])
 
@@ -67,7 +67,10 @@ const router = useRouter()
 
   const getCartItems = async () => {
     try {
-        const cartItems = await Api.getCartItems(userId.id, jwt);
+        const user = JSON.parse(sessionStorage.getItem("user"))
+        const jwt = sessionStorage.getItem("jwt")
+        if (!user || !jwt) return
+        const cartItems = await Api.getCartItems(user.id, jwt);
         console.log("Raw cart items from API:", cartItems); // تحقق من البيانات هنا
         setTotalCartItem(cartItems?.length);
         setCartItemList(cartItems);
@@ -96,13 +99,13 @@ const router = useRouter()
        
 <DropdownMenuItem key={cat.id}>
   <Image 
-    src={`http://localhost:1337${cat?.icon?.[0]?.url}`} 
+    src={cat?.icon?.[0]?.url} 
     width={23} 
     height={23} 
     unoptimized={true} 
     alt=''
   />
-<Link href={`/products-category/${cat.name} `}> 
+<Link href={`/products-category/${cat.name}`}> 
 
 <p className='cursor-pointer text-lg'>{cat.name}</p> 
 
@@ -157,17 +160,3 @@ const router = useRouter()
     <DropdownMenuSeparator />
     <DropdownMenuItem>Profile</DropdownMenuItem>
     <DropdownMenuItem >  <Link href="/myOrders">Orders</Link></DropdownMenuItem>
-   
-    <DropdownMenuItem onClick={()=>onSignOut()}>Logout</DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenu>
-
-  }
-      
-     </div>
-    
-    </div>
-  )
-}
-
-export default Hedear
