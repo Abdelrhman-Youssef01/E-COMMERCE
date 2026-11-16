@@ -22,13 +22,7 @@ function CartItemList({cartItemList,deletItem}) {
             {cartItemList.map((cart,index)=>(
                 <div className='flex justify-between items-center'>
                    <div className='flex items-center gap-4 mt-5'>
-                   <Image    src={`https://localhost:1337${cart?.image}` } // Provide a fallback image path
- 
-                         width={70}
-                         height={70}
-                         alt='icon'
-                         className='border p-2'
-                         />
+                   <Image    src={slider?.image[0]?.url}/>
 
                          <div>
                             <h2 className='font-bold'>{cart?.name}</h2>
