@@ -18,12 +18,12 @@ function ProductDetail({product}) {
    
 
     const [quantity, setQuantity] = useState(1)
-    const jwt = sessionStorage.getItem("jwt")
     const router= useRouter()
-    const user =JSON.parse(sessionStorage.getItem("user"))
     const {updateCart,setUpdateCart} = useContext(CartContext)
     const addToCart=()=>{
-        if(!jwt){
+        const jwt = sessionStorage.getItem("jwt")
+        const user = JSON.parse(sessionStorage.getItem("user"))
+        if(!jwt || !user){
             router.push("/sign-in")
             return
         }
@@ -56,7 +56,7 @@ function ProductDetail({product}) {
 
   return (
     <div className='grid grid-cols-1 md:grid-cols-2'>
-            <Image src={ `http://localhost:1337${product?.image[0]?.url}` }
+            <Image src={product?.image[0]?.url}
                 width={300}
                 height={300}
                 alt="img"
