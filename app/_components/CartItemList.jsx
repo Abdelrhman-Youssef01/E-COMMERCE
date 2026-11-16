@@ -20,9 +20,9 @@ function CartItemList({cartItemList,deletItem}) {
     <div>
         <div>
             {cartItemList.map((cart,index)=>(
-                <div className='flex justify-between items-center'>
+                <div key={index} className='flex justify-between items-center'>
                    <div className='flex items-center gap-4 mt-5'>
-                   <Image    src={slider?.image[0]?.url}/>
+                   <Image src={cart?.image} width={70} height={70} alt={cart?.name || 'product'} />
 
                          <div>
                             <h2 className='font-bold'>{cart?.name}</h2>
