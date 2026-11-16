@@ -72,3 +72,15 @@ const getCartItems = () => Promise.resolve([]);
 const myOrders = () => Promise.resolve([]);
 
 export default {
+    getCategory,
+  getSlider,
+  getCategoryList,
+  getProductList,
+  getProductByCategory,
+  registerUser,
+  signIn,
+  addToCart,
+  getCartItems,
+  createOrder,
+  myOrders,
+};
